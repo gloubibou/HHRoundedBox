@@ -5,22 +5,22 @@ Repository: https://github.com/gloubibou/HHRoundedBox
 
 ##HHRoundedBox
 
-Updated by Pierre Bernard on 04/09/2013
-Copyright 2013 Pierre Bernard (http://www.bernard-web.com/pierre), Blake Seely and Matt Gemmell (see below)
+Updated by Pierre Bernard on 04/09/2013  
+Copyright 2013 Pierre Bernard (http://www.bernard-web.com/pierre), Blake Seely and Matt Gemmell (see below)  
 Permissions and License are the same as below, but please include credit to me (Pierre Bernard) as well as Blake and Matt
 
 
 ##BSRoundedBox
 
-Updated by Blake Seely on 01/05/2006
-Copyright 2006 Blake Seely (http://www.blakeseely.com) and Matt Gemmell (see below)
+Updated by Blake Seely on 01/05/2006  
+Copyright 2006 Blake Seely (http://www.blakeseely.com) and Matt Gemmell (see below)  
 Permissions and License are the same as below, but please include credit to me (Blake Seely) as well as Matt.
 
 
 ##RoundedBox
 
-Created by Matt Gemmell on 01/11/2005.
-Copyright 2006 Matt Gemmell. http://mattgemmell.com/
+Created by Matt Gemmell on 01/11/2005.  
+Copyright 2006 Matt Gemmell. http://mattgemmell.com/  
 
 Permission to use this code:
 
