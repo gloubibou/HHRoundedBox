@@ -142,14 +142,9 @@ static void commonInit(HHRoundedBox *roundedBox)
 - (void)drawRect:(NSRect)rect
 {
 	// Construct rounded rect path
-	NSRect	bgRect;
 	NSRect	boxRect		= [self bounds];
 	CGFloat borderWidth = [self borderWidth];
-
-	bgRect			= NSInsetRect(boxRect, borderWidth / 2.0, borderWidth / 2.0);
-	bgRect			= NSIntegralRect(bgRect);
-	bgRect.origin.x += 0.5;
-	bgRect.origin.y += 0.5;
+	NSRect	bgRect		= NSInsetRect(boxRect, borderWidth / 2.0, borderWidth / 2.0);
 
 	CGFloat			minX			= NSMinX(bgRect);
 	CGFloat			midX			= NSMidX(bgRect);
@@ -214,7 +209,8 @@ static void commonInit(HHRoundedBox *roundedBox)
 								fromRect:srcRect];
 
 		[nsContext restoreGraphicsState];
-	} else {
+	}
+	else {
 		// Draw solid color background
 		[[self backgroundColor] set];
 		[bgPath fill];
@@ -225,10 +221,6 @@ static void commonInit(HHRoundedBox *roundedBox)
 	if (noiseOpacity > 0.0f) {
 		[KGNoise drawNoiseWithOpacity:noiseOpacity];
 	}
-
-	NSColor *borderColor = [self borderColor];
-
-	[borderColor set];
 
 	// Create drawing rectangle for title
 	float	titleHInset = borderWidth + MG_TITLE_INSET + 1.0;
@@ -245,7 +237,10 @@ static void commonInit(HHRoundedBox *roundedBox)
 		// We use the alternate (darker) selectedControlColor since the regular one is too light.
 		// The alternate one is the highlight color for NSTableView, NSOutlineView, etc.
 		// This mimics how Automator highlights the selected action in a workflow.
-	} else {
+	}
+	else {
+		NSColor *borderColor = [self borderColor];
+
 		[borderColor set];
 	}
 
@@ -287,7 +282,8 @@ static void commonInit(HHRoundedBox *roundedBox)
 									   toPoint:NSMakePoint(maxX, maxY)
 										radius:radius];
 		[path lineToPoint:NSMakePoint(maxX, maxY)];
-	} else {
+	}
+	else {
 		// Draw full titlebar, since we're either set to always do so, or we don't have room for a short one.
 		[path lineToPoint:NSMakePoint(NSMaxX(bgRect), minY)];
 		[path appendBezierPathWithArcFromPoint:NSMakePoint(NSMaxX(bgRect), maxY)
@@ -372,7 +368,8 @@ static void commonInit(HHRoundedBox *roundedBox)
 
 	if (calibratedGradientStartColor != nil) {
 		[self setGradientStartCIColor:[[[CIColor alloc] initWithColor:calibratedGradientStartColor] autorelease]];
-	} else {
+	}
+	else {
 		[self setGradientStartCIColor:nil];
 	}
 
@@ -394,7 +391,8 @@ static void commonInit(HHRoundedBox *roundedBox)
 
 	if (calibratedGradientEndColor != nil) {
 		[self setGradientEndCIColor:[[[CIColor alloc] initWithColor:calibratedGradientEndColor] autorelease]];
-	} else {
+	}
+	else {
 		[self setGradientEndCIColor:nil];
 	}
 }
