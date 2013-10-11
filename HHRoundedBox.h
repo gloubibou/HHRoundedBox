@@ -52,6 +52,7 @@
 	BOOL	_drawsFullTitleBar;
 	BOOL	_selected;
 	BOOL	_drawsGradientBackground;
+    BOOL    _drawsTitle;
 	CGFloat _noiseOpacity;
 
 	CIColor *_gradientStartCIColor;
@@ -59,6 +60,7 @@
 	NSRect	_titlePathRect;
 }
 
+@property (nonatomic, assign) BOOL		drawsTitle;
 @property (nonatomic, assign) BOOL		drawsFullTitleBar;
 @property (nonatomic, assign) BOOL		selected;
 @property (nonatomic, assign) CGFloat	borderWidth;
