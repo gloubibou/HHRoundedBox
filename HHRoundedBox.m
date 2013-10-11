@@ -72,6 +72,7 @@
 	[self exposeBinding:@"gradientEndColor"];
 	[self exposeBinding:@"backgroundColor"];
 	[self exposeBinding:@"drawsFullTitleBar"];
+    [self exposeBinding:@"drawsTitle"];
 	[self exposeBinding:@"selected"];
 	[self exposeBinding:@"drawsGradientBackground"];
 	[self exposeBinding:@"noiseOpacity"];
@@ -91,6 +92,7 @@ static void commonInit(HHRoundedBox *roundedBox)
 	[roundedBox setGradientStartColor:[NSColor colorWithCalibratedWhite:0.92 alpha:1.0]];
 	[roundedBox setGradientEndColor:[NSColor colorWithCalibratedWhite:0.82 alpha:1.0]];
 	[roundedBox setBackgroundColor:[NSColor colorWithCalibratedWhite:0.90 alpha:1.0]];
+    [roundedBox setDrawsTitle:YES];
 	[roundedBox setDrawsFullTitleBar:NO];
 	[roundedBox setSelected:NO];
 	[roundedBox setDrawsGradientBackground:YES];
@@ -244,11 +246,15 @@ static void commonInit(HHRoundedBox *roundedBox)
 		[borderColor set];
 	}
 
-	// Draw title background
-	NSBezierPath *titlePath = [self titlePathWithinRect:bgRect cornerRadius:borderRadius titleRect:titleRect];
-	[titlePath fill];
+    if (self.drawsTitle)
+    {
+        // Draw title background
+        NSBezierPath *titlePath = [self titlePathWithinRect:bgRect cornerRadius:borderRadius titleRect:titleRect];
+        [titlePath fill];
+        
+        [self setTitlePathRect:[titlePath bounds]];
+    }
 
-	[self setTitlePathRect:[titlePath bounds]];
 
 	// Draw rounded rect around entire box
 	if (borderWidth > 0.0) {
@@ -256,8 +262,11 @@ static void commonInit(HHRoundedBox *roundedBox)
 		[bgPath stroke];
 	}
 
-	// Draw title text using the titleCell
-	[[self titleCell] drawInteriorWithFrame:titleRect inView:self];
+    if (self.drawsTitle)
+    {
+        // Draw title text using the titleCell
+        [[self titleCell] drawInteriorWithFrame:titleRect inView:self];
+    }
 }
 
 - (NSBezierPath *)titlePathWithinRect:(NSRect)rect cornerRadius:(float)radius titleRect:(NSRect)titleRect
